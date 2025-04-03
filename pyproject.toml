@@ -16,7 +16,25 @@ classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
 requires-python = "~=3.10"
-
+dependencies = [
+    "ipython",
+    "jupyterlab",
+    "loguru",
+    "matplotlib",
+    "notebook",
+    "numpy",
+    "pandas",
+    "pip",
+    "python-dotenv",
+    "ruff",
+    "scikit-learn",
+    "tqdm",
+    "typer",
+    "plotly",
+    "nbconvert",
+    "jupyter",
+    "nbstripout"
+]
 
 [tool.ruff]
 line-length = 99

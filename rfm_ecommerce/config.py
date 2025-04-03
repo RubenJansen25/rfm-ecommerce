@@ -2,6 +2,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from loguru import logger
+import pandas as pd
 
 # Load environment variables from .env file if it exists
 load_dotenv()
@@ -21,12 +22,11 @@ MODELS_DIR = PROJ_ROOT / "models"
 REPORTS_DIR = PROJ_ROOT / "reports"
 FIGURES_DIR = REPORTS_DIR / "figures"
 
-# If tqdm is installed, configure loguru with tqdm.write
-# https://github.com/Delgan/loguru/issues/135
-try:
-    from tqdm import tqdm
+# Load data
+df = pd.read_excel(PROCESSED_DATA_DIR / "online_retail_II.xlsx")
 
-    logger.remove(0)
-    logger.add(lambda msg: tqdm.write(msg, end=""), colorize=True)
-except ModuleNotFoundError:
-    pass
+# Subset data to only 2009 datetime
+df = df[(df["InvoiceDate"] >= "2009-01-01") & (df["InvoiceDate"] <= "2009-12-31")]
+
+# Save subset to processed data directory
+df.to_csv(PROCESSED_DATA_DIR / "online_retail_II_2009.csv", index=False)
