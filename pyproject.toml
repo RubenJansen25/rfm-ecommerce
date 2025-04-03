@@ -30,7 +30,10 @@ dependencies = [
     "scikit-learn",
     "tqdm",
     "typer",
-    "plotly"
+    "plotly",
+    "nbconvert",
+    "jupyter",
+    "nbstripout"
 ]
 
 [tool.ruff]
